@@ -2,23 +2,44 @@
   "tasks": [
     {
       "id": "1",
-      "text": "Fazer trabalho da faculade"
+      "text": "Fazer trabalho da faculade",
+      "status": false
     },
     {
       "id": "2",
-      "text": "Limpar a casa"
+      "text": "Limpar a casa",
+      "status": false
     },
     {
       "id": "3",
-      "text": "Ir ao mercado"
+      "text": "Ir ao mercado",
+      "status": true
     },
     {
-      "id": "4",
-      "text": "Ir a academia"
+      "id": "d53a2786-8365-4fd9-8042-15a8f3671fbb",
+      "text": "teste",
+      "status": false
     },
     {
-      "id": "2a44223c-4077-4567-b9cf-64ea97df5076",
-      "text": "VIni"
+      "id": "f4e98baf-5083-4321-9b44-d377b4d26e36",
+      "text": "Teste de data 2",
+      "status": false,
+      "createdAt": "2024-06-13T22:50:04.781Z",
+      "updatedAt": "2024-06-13T23:07:28.548Z"
+    },
+    {
+      "id": "f617c135-f634-4466-8a74-d3443568bac0",
+      "text": "teste picker",
+      "status": false,
+      "createdAt": "2024-06-13T22:56:38.391Z",
+      "updatedAt": "2024-06-13T22:56:38.392Z"
+    },
+    {
+      "id": "4ed51da1-45fe-4c80-a760-c3ceb8687e77",
+      "text": "Teste 2",
+      "status": false,
+      "createdAt": "2024-06-13T23:03:29.495Z",
+      "updatedAt": "2024-06-13T23:03:29.496Z"
     }
   ]
 }

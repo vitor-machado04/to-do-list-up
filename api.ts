@@ -1,15 +1,20 @@
 import { ITask } from "./types/tasks";
 
-const baseURl = "http://localhost:3001";
+const baseURL = "http://localhost:3001";
 
-export const getAllToDoList = async (): Promise<ITask[]> => {
-    const res = await fetch(`${baseURl}/tasks`, { cache: 'no-store' });
+export const getAllToDoList = async (date?: string): Promise<ITask[]> => {
+    const url = new URL(`${baseURL}/tasks`);
+    if (date) {
+        url.searchParams.append('createdAt', date);
+    }
+
+    const res = await fetch(url.toString(), { cache: 'no-store' });
     const toDo = await res.json();
     return toDo;
 }
 
 export const addToDo = async (toDo: ITask): Promise<ITask> => {
-    const res = await fetch(`${baseURl}/tasks`, {
+    const res = await fetch(`${baseURL}/tasks`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -17,25 +22,24 @@ export const addToDo = async (toDo: ITask): Promise<ITask> => {
         body: JSON.stringify(toDo)
     });
 
-    const newToDo = res.json();
+    const newToDo = await res.json();
     return newToDo;
 }
 
 export const editToDo = async (toDo: ITask): Promise<ITask> => {
-    const res = await fetch(`${baseURl}/tasks/${toDo.id}`, {
+    const res = await fetch(`${baseURL}/tasks/${toDo.id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(toDo)
     });
-
-    const updatedToDo = res.json();
+    const updatedToDo = await res.json();
     return updatedToDo;
 }
 
 export const deleteToDo = async (id: string): Promise<void> => {
-    await fetch(`${baseURl}/tasks/${id}`, {
+    await fetch(`${baseURL}/tasks/${id}`, {
         method: 'DELETE',
     });
 }

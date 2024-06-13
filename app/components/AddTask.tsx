@@ -6,8 +6,11 @@ import { FormEventHandler, useState } from "react";
 import { addToDo } from "@/api";
 import { useRouter } from "next/navigation";
 import { v4 as uuidv4 } from 'uuid';
+import moment from "moment";
+import 'moment/locale/pt-br';
 
 function AddTask() {
+  moment.locale('pt-br');
   const router = useRouter()
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [newTaskValue, setNewTaskValue] = useState<string>('');
@@ -15,7 +18,11 @@ function AddTask() {
     e.preventDefault();
     await addToDo({
       id: uuidv4(),
-      text: newTaskValue
+      text: newTaskValue,
+      status: false,
+      createdAt: new Date(moment.utc().toISOString()),
+      updatedAt:new Date(moment.utc().toISOString())
+
     });
     setNewTaskValue("");
     setModalOpen(false);
@@ -34,7 +41,7 @@ function AddTask() {
         <form onSubmit={handleSubmitNewToDo}>
           <h3 className="font-bold text-lg">Adiconar nova tarefa</h3>
           <div className="modal-action">
-            <input value={newTaskValue} onChange={e => setNewTaskValue(e.target.value)} type="text" placeholder="Descreva a tarefa" className="input input-bordered w-full w-full" />
+            <input value={newTaskValue} onChange={e => setNewTaskValue(e.target.value)} type="text" placeholder="Descreva a tarefa" className="input input-bordered w-full" />
             <button type="submit" className="btn ">Enviar</button>
           </div>
         </form>
