@@ -6,7 +6,7 @@ import { FormEventHandler, useState } from "react";
 import { addToDo } from "@/api";
 import { useRouter } from "next/navigation";
 import { v4 as uuidv4 } from 'uuid';
-import moment from "moment";
+import moment from "moment-timezone";
 import 'moment/locale/pt-br';
 
 function AddTask() {
@@ -14,14 +14,15 @@ function AddTask() {
   const router = useRouter()
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [newTaskValue, setNewTaskValue] = useState<string>('');
+
   const handleSubmitNewToDo: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
     await addToDo({
       id: uuidv4(),
       text: newTaskValue,
       status: false,
-      createdAt: new Date(moment.utc().toISOString()),
-      updatedAt:new Date(moment.utc().toISOString())
+      createdAt: new Date(moment.tz('America/Sao_Paulo').format('YYYY-MM-DDTHH:MM:SS').toString()),
+      updatedAt: new Date(moment.tz('America/Sao_Paulo').format('YYYY-MM-DDTHH:MM:SS').toString())
 
     });
     setNewTaskValue("");

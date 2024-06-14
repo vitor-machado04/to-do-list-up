@@ -26,7 +26,7 @@ const Task: React.FC<TaskProps> = ({ task }) => {
             text: taskToEdit,
             status: false,
             createdAt: task.createdAt,
-            updatedAt:new Date(moment.utc().toISOString())
+            updatedAt: new Date(moment.tz('America/Sao_Paulo').format('YYYY-MM-DDTHH:MM:SS').toString()),
         });
         setOpenModalEdit(false);
         router.refresh();
@@ -44,7 +44,7 @@ const Task: React.FC<TaskProps> = ({ task }) => {
             text: task.text,
             status: !task.status,
             createdAt: task.createdAt,
-            updatedAt:new Date(moment.utc().toISOString())
+            updatedAt: new Date(moment.tz('America/Sao_Paulo').format('YYYY-MM-DDTHH:MM:SS').toString()),
         });
         router.refresh();
     };

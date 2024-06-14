@@ -13,7 +13,8 @@
     {
       "id": "3",
       "text": "Ir ao mercado",
-      "status": true
+      "status": false,
+      "updatedAt": null
     },
     {
       "id": "d53a2786-8365-4fd9-8042-15a8f3671fbb",
@@ -40,6 +41,34 @@
       "status": false,
       "createdAt": "2024-06-13T23:03:29.495Z",
       "updatedAt": "2024-06-13T23:03:29.496Z"
+    },
+    {
+      "id": "bafaf42e-47c1-4dce-8d18-e355891c1e52",
+      "text": "Teste 3",
+      "status": false,
+      "createdAt": "2024-06-13T23:23:51.127Z",
+      "updatedAt": "2024-06-13T23:23:51.129Z"
+    },
+    {
+      "id": "04b6b4a6-5175-4fd2-bbe5-7059d791f0d4",
+      "text": "Pinto e bola",
+      "status": false,
+      "createdAt": "1970-01-01T00:00:00.000Z",
+      "updatedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "8ade7fad-6204-474a-9574-583efb2ee712",
+      "text": "pintos e bolas 2 ",
+      "status": false,
+      "createdAt": "1970-01-01T00:00:00.000Z",
+      "updatedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "59362a78-0514-4fb4-85ca-1db1e2b23b30",
+      "text": "teste 4",
+      "status": false,
+      "createdAt": "2024-06-13T00:00:00.000Z",
+      "updatedAt": "2024-06-14T00:06:47.000Z"
     }
   ]
 }

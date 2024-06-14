@@ -1,6 +1,7 @@
 import AddTask from "./components/AddTask";
 import { getAllToDoList } from "@/api";
 import ToDoList from "./components/ToDoList";
+import Footer from "./components/footer";
 
 export default async function Home() {
   const tasks = await getAllToDoList();
@@ -22,13 +23,14 @@ export default async function Home() {
               <li><input type="radio" name="theme-dropdown" className="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Dracula" value="dracula" /></li>
               <li><input type="radio" name="theme-dropdown" className="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Dark" value="dark" /></li>
               <li><input type="radio" name="theme-dropdown" className="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Light" value="fantasy" /></li>
-              <li><input type="radio" name="theme-dropdown" className="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Bumblebee" value="bumblebee" /></li>
+              <li><input type="radio" name="theme-dropdown" className="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Black" value="black" /></li>
             </ul>
           </div>
         </div>
         <AddTask />
       </div>
       <ToDoList tasks={tasks} />
+      <Footer />
     </main>
   );
 }
