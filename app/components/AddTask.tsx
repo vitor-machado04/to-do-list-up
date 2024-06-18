@@ -19,10 +19,10 @@ function AddTask() {
     e.preventDefault();
     await addToDo({
       id: uuidv4(),
-      text: newTaskValue,
+      description: newTaskValue,
       status: false,
-      createdAt: new Date(moment.tz('America/Sao_Paulo').format('YYYY-MM-DDTHH:MM:SS').toString()),
-      updatedAt: new Date(moment.tz('America/Sao_Paulo').format('YYYY-MM-DDTHH:MM:SS').toString())
+      createdAt: new Date(moment.tz('America/Sao_Paulo').format('YYYY-MM-DD 00:00:00').toString()),
+      updatedAt: new Date(moment.tz('America/Sao_Paulo').format('YYYY-MM-DD 00:00:00').toString())
 
     });
     setNewTaskValue("");

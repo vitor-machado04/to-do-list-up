@@ -17,13 +17,13 @@ const Task: React.FC<TaskProps> = ({ task }) => {
     const router = useRouter()
     const [openModalEdit, setOpenModalEdit] = useState<boolean>(false);
     const [openModalDeleted, setOpenModalDeleted] = useState<boolean>(false);
-    const [taskToEdit, setTaskToEdit] = useState<string>(task.text);
+    const [taskToEdit, setTaskToEdit] = useState<string>(task.description);
 
     const handleSubmitEditToDo: FormEventHandler<HTMLFormElement> = async (e) => {
         e.preventDefault();
         await editToDo({
             id: task.id,
-            text: taskToEdit,
+            description: taskToEdit,
             status: false,
             createdAt: task.createdAt,
             updatedAt: new Date(moment.tz('America/Sao_Paulo').format('YYYY-MM-DDTHH:MM:SS').toString()),
@@ -41,7 +41,7 @@ const Task: React.FC<TaskProps> = ({ task }) => {
     const handleToggleStatus = async () => {
         await editToDo({
             id: task.id,
-            text: task.text,
+            description: task.description,
             status: !task.status,
             createdAt: task.createdAt,
             updatedAt: new Date(moment.tz('America/Sao_Paulo').format('YYYY-MM-DDTHH:MM:SS').toString()),
@@ -51,7 +51,7 @@ const Task: React.FC<TaskProps> = ({ task }) => {
 
     return (
         <tr key={task.id}>
-            <td className="w-full">{task.text}</td>
+            <td className="w-full">{task.description}</td>
             <td className="flex gap-5">
                 <span className="label-text">Concluída?</span>
                 <input type="checkbox" checked={task.status} onChange={handleToggleStatus} className="checkbox border-orange-400 checked:border-indigo-800 [--chkbg:theme(colors.indigo.600)] [--chkfg:orange]" />
