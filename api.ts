@@ -53,7 +53,7 @@ export const addToDo = async (toDo: ITask): Promise<ITask> => {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            id: toDo.id,
+            _id: toDo._id,
             status: toDo.status,
             description: toDo.description,
             createdAt: new Date(toDo.createdAt),
@@ -79,14 +79,14 @@ export const addToDo = async (toDo: ITask): Promise<ITask> => {
 // }
 
 export const editToDo = async (toDo: ITask): Promise<ITask> => {
-    const res = await fetch(`${baseURL}/update/${toDo.id}`, {
+    const res = await fetch(`${baseURL}/update/${toDo._id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            id: toDo.id,
-            status: toDo.status,
+            _id: toDo._id,
+            status: !toDo.status,
             description: toDo.description
         })
     });

@@ -13,6 +13,7 @@ const ToDoList: React.FC<ToDoListProps> = ({ tasks }) => {
 
     const openTasks = tasks.filter(task => !task.status && (!filterDate || new Date(task.createdAt).toDateString() === new Date(filterDate).toDateString()));
     const closedTasks = tasks.filter(task => task.status);
+    
 
     return (
         <div className="overflow-x-auto">
@@ -27,14 +28,14 @@ const ToDoList: React.FC<ToDoListProps> = ({ tasks }) => {
             </div>
             <table className="table">
                 <tbody className='text-lg'>
-                    {openTasks.map(task => <Task key={task.id} task={task} />)}
+                    {openTasks.map(task => <Task key={task._id} task={task} />)}
                 </tbody>
             </table>
 
             <h2 className='font-bold text-xl mb-5 mt-8'>Tarefas Concluídas</h2>
             <table className="table">
                 <tbody className='text-lg'>
-                    {closedTasks.map(task => <Task key={task.id} task={task} />)}
+                    {closedTasks.map(task => <Task key={task._id} task={task} />)}
                 </tbody>
             </table>
         </div>
