@@ -14,29 +14,37 @@ const ToDoList: React.FC<ToDoListProps> = ({ tasks }) => {
     // const openTasks = tasks.filter(task => !task.status && (!filterDate || new Date(task.createdAt).toDateString() === new Date(filterDate).toDateString()));
     // const closedTasks = tasks.filter(task => task.status );
     const [filterDate, setFilterDate] = useState<string>('');
+    const [searchTerm, setSearchTerm] = useState<string>('');
 
-    const openTasks = tasks.filter(task => {
-        const taskDate = new Date(task.createdAt).toDateString();
-        const filterDateString = filterDate ? new Date(filterDate).toDateString() : null;
-        return !task.status && (!filterDate || taskDate === filterDateString);
-    });
+    const filteredTasks = tasks.filter(task => 
+        (searchTerm === '' || task.description.toLowerCase().includes(searchTerm.toLowerCase())) &&
+        (!filterDate || new Date(task.createdAt).toDateString() === new Date(filterDate).toDateString())
+    );
 
-    const closedTasks = tasks.filter(task => task.status);
+    const openTasks = filteredTasks.filter(task => !task.status);
+    const closedTasks = filteredTasks.filter(task => task.status);
 
-    console.log(closedTasks);
-    console.log(openTasks);
+    const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setSearchTerm(e.target.value);
+    };
 
     return (
         <div className="overflow-x-auto">
             <div className="flex justify-between items-center mb-5">
-                <h2 className='font-bold text-xl'>Tarefas Abertas</h2>
+                <input 
+                    className="input input-bordered w-full max-w-xs" 
+                    placeholder="Pesquisar por tarefa"
+                    value={searchTerm}
+                    onChange={handleSearchChange}
+                />
                 <input
                     type="date"
-                    className="input input-bordered w-full max-w-xs"
+                    className="input input-bordered"
                     value={filterDate}
                     onChange={e => setFilterDate(e.target.value)}
                 />
             </div>
+            <h2 className='font-bold text-xl'>Tarefas Abertas</h2>
             <table className="table">
                 <tbody className='text-lg'>
                     {openTasks.map(task => <Task key={task._id} task={task} />)}
