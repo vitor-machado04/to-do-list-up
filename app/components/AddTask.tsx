@@ -22,8 +22,8 @@ function AddTask() {
       _id: uuidv4().toString(),
       description: newTaskValue,
       status: false,
-      createdAt: new Date(moment.tz('America/Sao_Paulo').format('YYYY-MM-DD 00:00:00').toString()),
-      updatedAt: new Date(moment.tz('America/Sao_Paulo').format('YYYY-MM-DD 00:00:00').toString())
+      createdAt: new Date(moment.tz('America/Sao_Paulo').format('YYYY-MM-DD').toString()),
+      updatedAt: new Date(moment.tz('America/Sao_Paulo').format('YYYY-MM-DD').toString())
 
     });
     setNewTaskValue("");

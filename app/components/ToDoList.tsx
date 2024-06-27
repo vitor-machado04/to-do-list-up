@@ -9,6 +9,10 @@ interface ToDoListProps {
 }
 
 const ToDoList: React.FC<ToDoListProps> = ({ tasks }) => {
+    // const [filterDate, setFilterDate] = useState<string>('');
+
+    // const openTasks = tasks.filter(task => !task.status && (!filterDate || new Date(task.createdAt).toDateString() === new Date(filterDate).toDateString()));
+    // const closedTasks = tasks.filter(task => task.status );
     const [filterDate, setFilterDate] = useState<string>('');
     const [searchTerm, setSearchTerm] = useState<string>('');
 
